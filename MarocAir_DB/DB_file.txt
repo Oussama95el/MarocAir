@@ -16,4 +16,26 @@ nbrPlace int NOT NULL,
 dateDepart DATE NOT NULL,
 airLine varchar(255) NOT NULL,
 dateArrive DATE NOT NULL
+
+);
+
+create table reservation (
+nbr_adulte int NOT NULL,
+nbr_enfant int NOT NULL ,
+prixReservation int NOT NULL,
+archive BOOLEAN NOT NULL,
+id BIGSERIAL NOT NULL PRIMARY KEY
+);
+
+
+create table reservation(
+id BIGSERIAL not null primary key,
+id_client BIGSERIAL NOT NULL,
+id_vol BIGSERIAL NOT NULL,
+nbr_adulte int NOT NULL,
+nrb_enfant int NOT NULL,
+prixReservation int NOT NULL,
+archive BOOLEAN NOT NULL,
+FOREIGN KEY (id_client) REFERENCES clients(codeclient) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (id_vol) REFERENCES vol(idvol) ON UPDATE CASCADE ON DELETE CASCADE
 );
