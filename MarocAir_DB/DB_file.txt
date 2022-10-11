@@ -1,2 +1,19 @@
+CREATE DATABASE maroc_air IF N OT EXISTS;
 
-CREATE DATABASE maroc_air IF NOT EXISTS;
+ CREATE TABLE Clients (
+ codeClient BIGSERIAL NOT NULL PRIMARY KEY,
+ nom varchar(255) NOT NULL,
+ prenom VARCHAR(255) NOT NULL,
+ email varchar(255) NOT NULL ,
+ phone varchar(255) NOT NULL
+ );
+
+CREATE TABLE vol (
+idvol BIGSERIAL NOT NULL PRIMARY KEY,
+villeDepart varchar(255) NOT NULL ,
+villeArrive varchar(255) NOT NULL,
+nbrPlace int NOT NULL,
+dateDepart DATE NOT NULL,
+airLine varchar(255) NOT NULL,
+dateArrive DATE NOT NULL
+);
