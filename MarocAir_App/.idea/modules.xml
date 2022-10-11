@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MarocAir_App.iml" filepath="$PROJECT_DIR$/.idea/MarocAir_App.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MarocAir/MarocVol.iml" filepath="$PROJECT_DIR$/MarocAir/MarocVol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MarocVol.iml" filepath="$PROJECT_DIR$/MarocVol.iml" />
     </modules>
   </component>
 </project>
