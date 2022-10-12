@@ -1,14 +1,14 @@
-package Database;
+package com.maroc_air.Database;
 
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import java.util.Objects;
 
 
 public class DBConnection {
-    private Connection conn = null;
+    private static Connection conn = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
@@ -21,7 +21,7 @@ public class DBConnection {
     }
 
 
-    public Connection establishConnection () {
+    public static Connection establishConnection () {
 
         try {
             conn = DriverManager.getConnection(Config.getUrl(), Config.getUser(), Config.getPassword());
@@ -29,6 +29,7 @@ public class DBConnection {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            return null;
         }
         return conn;
     }
@@ -59,18 +60,12 @@ public class DBConnection {
     }
     /**
      * Set the prepare statement and return true if statement is set
-     * @param query Querry String
+     * @param query String
      * @return boolean (true,false)
      */
-    public boolean prepare (String query) {
-        try{
-            this.preparedStatement = conn.prepareStatement(query);
-            return true;
-        } catch (SQLException e){
-            e.printStackTrace();
-            System.out.println("Failed preparing statement");
-            return false;
-        }
+    public static PreparedStatement prepare(String query) throws SQLException {
+        return Objects.requireNonNull(establishConnection())
+                .prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     }
 
 

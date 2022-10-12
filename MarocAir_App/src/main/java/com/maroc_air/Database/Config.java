@@ -1,4 +1,4 @@
-package Database;
+package com.maroc_air.Database;
 
 public class Config {
     private final static String URL = "jdbc:postgresql://localhost:5432/maroc_air";
