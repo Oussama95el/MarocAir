@@ -14,10 +14,6 @@
           <element id="module-output" name="MarocAir" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/MarocAir_App/target/MarocAir-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
-      </element>
-      <element id="javaee-facet-resources" facet="MarocAir/web/Web" />
     </root>
   </artifact>
 </component>
