@@ -1,9 +1,13 @@
 package com.maroc_air.DAO;
 
+import com.maroc_air.Connection;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 
-public class DAO {
+public class DAO extends Connection {
     public static HashMap<String,DAO> repositories = new HashMap<>();
     private final String tableName;
     //Constructor
@@ -35,5 +39,21 @@ public class DAO {
         // order by id desc
         query.append(" order by id desc");
         return query.toString();
+    }
+
+    public ResultSet getAll() {
+        String query = "SELECT * FROM " + getTableName();
+        try {
+            PreparedStatement preparedStatement = db.prepare(query);
+            assert preparedStatement != null;
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                return null;
+            }
+            return resultSet;
+        } catch (SQLException e) {
+            System.out.println("Error while getting all from \"" + getTableName() + "\"");
+            return null;
+        }
     }
 }
