@@ -1,4 +1,4 @@
-package Database;
+package com.maroc_air.Database;
 
 import java.sql.Connection;
 import java.sql.*;
