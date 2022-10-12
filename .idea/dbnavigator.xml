@@ -29,7 +29,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2d856d23-0ae1-41ed-98b5-ef85ff7be85f">
-      <console name="maroc_air" type="STANDARD" schema="information_schema" session="Main" />
+      <console name="maroc_air" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -83,7 +83,7 @@
           <database value="maroc_air" />
           <type value="USER_PASSWORD" />
           <user value="postgres" />
-          <deprecated-pwd value="YWRtaW4=" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="false" />
