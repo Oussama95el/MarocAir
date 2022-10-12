@@ -1,4 +1,4 @@
-package com.marocAir.Controllers;
+package com.maroc_air.Controller;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
