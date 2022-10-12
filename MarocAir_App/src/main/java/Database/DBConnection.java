@@ -57,7 +57,6 @@ public class DBConnection {
             this.preparedStatement = null;
         }
     }
-
     /**
      * Set the prepare statement and return true if statement is set
      * @param query Querry String

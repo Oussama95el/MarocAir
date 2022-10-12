@@ -1,9 +1,7 @@
 package com.maroc_air.Controller;
-
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
