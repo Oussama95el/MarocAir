@@ -19,15 +19,6 @@ dateArrive DATE NOT NULL
 
 );
 
-create table reservation (
-nbr_adulte int NOT NULL,
-nbr_enfant int NOT NULL ,
-prixReservation int NOT NULL,
-archive BOOLEAN NOT NULL,
-id BIGSERIAL NOT NULL PRIMARY KEY
-);
-
-
 create table reservation(
 id BIGSERIAL not null primary key,
 id_client BIGSERIAL NOT NULL,
