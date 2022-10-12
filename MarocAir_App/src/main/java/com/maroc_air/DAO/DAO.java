@@ -1,5 +1,6 @@
 package com.maroc_air.DAO;
 
+<<<<<<< HEAD
 import com.maroc_air.Connection;
 
 import java.sql.PreparedStatement;
@@ -56,4 +57,7 @@ public class DAO extends Connection {
             return null;
         }
     }
+=======
+public class DAO {
+>>>>>>> 1d291f94dcacd781e87329ea70177d493302bdb8
 }
