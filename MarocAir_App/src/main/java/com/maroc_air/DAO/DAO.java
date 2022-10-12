@@ -1,16 +1,12 @@
 package com.maroc_air.DAO;
-
 import com.maroc_air.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-
 public class DAO extends Connection {
     public static HashMap<String, DAO> repositories = new HashMap<>();
     private final String tableName;
-
     //Constructor
     public DAO(String tableName) {
         this.tableName = tableName;
