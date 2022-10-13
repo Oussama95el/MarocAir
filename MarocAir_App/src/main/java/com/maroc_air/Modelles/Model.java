@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 abstract public class Model extends Connection {
     protected static DAO getRepository(Model instance) {
         return DAO.getRepository(instance.getTableName());

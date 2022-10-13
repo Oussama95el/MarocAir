@@ -11,12 +11,10 @@ public class DAO extends Connection {
     public DAO(String tableName) {
         this.tableName = tableName;
     }
-
     //getters
     public String getTableName() {
         return tableName;
     }
-
     public static DAO getRepository(String name) {
         DAO repository = repositories.get(name);
         if (repository == null) {
@@ -25,7 +23,6 @@ public class DAO extends Connection {
         }
         return repository;
     }
-
     protected String selectQuery(String[] fields) {
         StringBuilder query = new StringBuilder("SELECT * FROM " + getTableName() + " WHERE ");
         for (int i = 0; i < fields.length; i++) {
@@ -38,7 +35,6 @@ public class DAO extends Connection {
         query.append(" order by id desc");
         return query.toString();
     }
-
     public ResultSet getAll() {
         String query = "SELECT * FROM " + getTableName();
         try {
