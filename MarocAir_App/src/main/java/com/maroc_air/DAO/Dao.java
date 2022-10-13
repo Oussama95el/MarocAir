@@ -3,6 +3,7 @@ package com.maroc_air.DAO;
 import com.maroc_air.Database.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -59,10 +60,10 @@ public class Dao extends Connection {
         }
     }
 
-    public <T> ResultSet getByFields(String[] fields,T[] values) throws SQLException {
-        String query = selectQuery(fields);
-        PreparedStatement preparedStatement = Connection.prepare(query);
+    public <T> ResultSet getByFields(String[] fields,T[] values) {
         try {
+            String query = selectQuery(fields);
+            PreparedStatement preparedStatement = Connection.prepare(query);
             for (int i = 0; i < values.length; i++) {
                if (preparedStatement != null){
                    Connection.setParam(i + 1, values[i]);
@@ -82,9 +83,22 @@ public class Dao extends Connection {
 
     public static void main(String[] args) {
 
-    String[] clients = {"nom","prenom","email","phone"};
+    String[] clients = {"email"};
     Dao test = new Dao("clients");
 
-        System.out.println( test.getAll());
+        ResultSet resultSet = test.getByFields(clients, new String[]{"elbechario@gmail.com"});
+        ResultSetMetaData rsmd = null;
+        try {
+            rsmd = resultSet.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(",  ");
+                    String columnValue = resultSet.getString(i);
+                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
+                }}
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

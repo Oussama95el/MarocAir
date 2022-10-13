@@ -34,6 +34,8 @@ public abstract class Connection {
      */
     public static  <T>void setParam(int index, T data) {
         try{
+
+//            preparedStatement.setObject(index, data);
             switch (((Object) data).getClass().getSimpleName()) {
                 case "Boolean" -> preparedStatement.setBoolean(index, (Boolean) data);
                 case "Integer" -> preparedStatement.setInt(index, (int) data);
