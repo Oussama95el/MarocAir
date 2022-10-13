@@ -1,18 +1,18 @@
 package com.maroc_air.DAO;
 
-import com.maroc_air.Connection;
+import com.maroc_air.Database.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class DAO extends Connection {
-    public static HashMap<String, DAO> repositories = new HashMap<>();
+public class Dao extends Connection {
+    public static HashMap<String, Dao> repositories = new HashMap<>();
     private final String tableName;
 
     //Constructor
-    public DAO(String tableName) {
+    public Dao(String tableName) {
         this.tableName = tableName;
     }
 
@@ -21,10 +21,10 @@ public class DAO extends Connection {
         return tableName;
     }
 
-    public static DAO getRepository(String name) {
-        DAO repository = repositories.get(name);
+    public static Dao getRepository(String name) {
+        Dao repository = repositories.get(name);
         if (repository == null) {
-            repository = new DAO(name);
+            repository = new Dao(name);
             repositories.put(name, repository);
         }
         return repository;
@@ -46,7 +46,7 @@ public class DAO extends Connection {
     public ResultSet getAll() {
         String query = "SELECT * FROM " + getTableName();
         try {
-            PreparedStatement preparedStatement = db.prepare(query);
+            PreparedStatement preparedStatement = Connection.prepare(query);
             assert preparedStatement != null;
             ResultSet resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
@@ -59,13 +59,14 @@ public class DAO extends Connection {
         }
     }
 
-    public ResultSet getByStringFields(String[] fields, String[] values) {
+    public <T> ResultSet getByFields(String[] fields,T[] values) throws SQLException {
         String query = selectQuery(fields);
+        PreparedStatement preparedStatement = Connection.prepare(query);
         try {
-            PreparedStatement preparedStatement = db.prepare(query);
             for (int i = 0; i < values.length; i++) {
-                assert preparedStatement != null;
-                preparedStatement.setString(i + 1, values[i]);
+               if (preparedStatement != null){
+                   Connection.setParam(i + 1, values[i]);
+               }
             }
             assert preparedStatement != null;
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -77,5 +78,13 @@ public class DAO extends Connection {
             System.out.println("Error while getting from \"" + getTableName() + "\" by string fields: " + Arrays.toString(fields) + " values:" + Arrays.toString(values));
             return null;
         }
+    }
+
+    public static void main(String[] args) {
+
+    String[] clients = {"nom","prenom","email","phone"};
+    Dao test = new Dao("clients");
+
+        System.out.println( test.getAll());
     }
 }
