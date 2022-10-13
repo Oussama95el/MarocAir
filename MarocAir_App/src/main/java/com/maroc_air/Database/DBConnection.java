@@ -1,17 +1,13 @@
 package com.maroc_air.Database;
-
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Objects;
-
-
 public class DBConnection {
     private static Connection conn = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-
     public DBConnection(){
         try {
             Class.forName("org.postgresql.Driver");
@@ -19,10 +15,7 @@ public class DBConnection {
             throw new RuntimeException(e);
         }
     }
-
-
     public static Connection establishConnection () {
-
         try {
             conn = DriverManager.getConnection(Config.getUrl(), Config.getUser(), Config.getPassword());
             System.out.println("Connected to the PostgreSQL server successfully.");

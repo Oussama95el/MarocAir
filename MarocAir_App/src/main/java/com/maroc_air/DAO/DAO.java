@@ -1,15 +1,20 @@
 package com.maroc_air.DAO;
-import com.maroc_air.Connection;
+import com.maroc_air.Database.DBConnection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-public class DAO extends Connection {
+import java.util.TreeMap;
+
+public class DAO{
     public static HashMap<String, DAO> repositories = new HashMap<>();
     private final String tableName;
+    private final DBConnection db;
     //Constructor
     public DAO(String tableName) {
         this.tableName = tableName;
+        this.db= new DBConnection();
     }
     //getters
     public String getTableName() {
@@ -44,6 +49,7 @@ public class DAO extends Connection {
             if (!resultSet.next()) {
                 return null;
             }
+            System.out.println("True");
             return resultSet;
         } catch (SQLException e) {
             System.out.println("Error while getting all from \"" + getTableName() + "\"");
