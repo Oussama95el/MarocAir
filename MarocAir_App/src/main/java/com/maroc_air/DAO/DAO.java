@@ -1,10 +1,10 @@
 package com.maroc_air.DAO;
 
 import com.maroc_air.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class DAO extends Connection {
@@ -59,4 +59,23 @@ public class DAO extends Connection {
         }
     }
 
+    public ResultSet getByStringFields(String[] fields, String[] values) {
+        String query = selectQuery(fields);
+        try {
+            PreparedStatement preparedStatement = db.prepare(query);
+            for (int i = 0; i < values.length; i++) {
+                assert preparedStatement != null;
+                preparedStatement.setString(i + 1, values[i]);
+            }
+            assert preparedStatement != null;
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                return null;
+            }
+            return resultSet;
+        } catch (SQLException e) {
+            System.out.println("Error while getting from \"" + getTableName() + "\" by string fields: " + Arrays.toString(fields) + " values:" + Arrays.toString(values));
+            return null;
+        }
+    }
 }
