@@ -3,7 +3,6 @@ package com.maroc_air.DAO;
 import com.maroc_air.Database.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -101,8 +100,6 @@ public class Dao extends Connection {
                         System.out.println(resultSet.getString("email"));
                         System.out.println("tetst");
                     }
-
-
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
