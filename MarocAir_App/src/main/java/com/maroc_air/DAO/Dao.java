@@ -14,6 +14,7 @@ public class Dao extends Connection {
 
     //Constructor
     public Dao(String tableName) {
+        Connection.getConnection();
         this.tableName = tableName;
     }
 
@@ -40,14 +41,15 @@ public class Dao extends Connection {
             }
         }
         // order by id desc
-        query.append(" order by id desc");
+        query.append(" order by codeclient desc");
         return query.toString();
     }
 
     public ResultSet getAll() {
         String query = "SELECT * FROM " + getTableName();
+
         try {
-            PreparedStatement preparedStatement = Connection.prepare(query);
+            PreparedStatement preparedStatement =  prepare(query);
             assert preparedStatement != null;
             ResultSet resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
@@ -63,17 +65,21 @@ public class Dao extends Connection {
     public <T> ResultSet getByFields(String[] fields,T[] values) {
         try {
             String query = selectQuery(fields);
-            PreparedStatement preparedStatement = Connection.prepare(query);
+            PreparedStatement preparedStatement =  prepare(query);
+            System.out.println(preparedStatement);
             for (int i = 0; i < values.length; i++) {
-               if (preparedStatement != null){
-                   Connection.setParam(i + 1, values[i]);
-               }
+                if (preparedStatement != null){
+                    Connection.setParam(i + 1, values[i],preparedStatement);
+                }
             }
             assert preparedStatement != null;
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next()) {
+            ResultSet resultSet = execute(preparedStatement);
+//            PreparedStatement statement = Connection.getConnection().prepareStatement("select * from clients limit 1");
+//            ResultSet resultSet = statement.executeQuery();
+            if (resultSet == null) {
                 return null;
             }
+
             return resultSet;
         } catch (SQLException e) {
             System.out.println("Error while getting from \"" + getTableName() + "\" by string fields: " + Arrays.toString(fields) + " values:" + Arrays.toString(values));
@@ -83,22 +89,24 @@ public class Dao extends Connection {
 
     public static void main(String[] args) {
 
-    String[] clients = {"email"};
+    String[] clients = {"phone"};
+    String[] data = {"123456"};
     Dao test = new Dao("clients");
 
-        ResultSet resultSet = test.getByFields(clients, new String[]{"elbechario@gmail.com"});
-        ResultSetMetaData rsmd = null;
-        try {
-            rsmd = resultSet.getMetaData();
-            int columnsNumber = rsmd.getColumnCount();
-            while (resultSet.next()) {
-                for (int i = 1; i <= columnsNumber; i++) {
-                    if (i > 1) System.out.print(",  ");
-                    String columnValue = resultSet.getString(i);
-                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
-                }}
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+        ResultSet resultSet = test.getByFields(clients,data);
+
+                try {
+                    while (resultSet.next())
+                    {
+                        System.out.println(resultSet.getString("email"));
+                        System.out.println("tetst");
+                    }
+
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+
 }

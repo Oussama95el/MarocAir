@@ -7,8 +7,9 @@ import java.util.Objects;
 
 public abstract class Connection {
     private static java.sql.Connection connection = null;
-    private static PreparedStatement preparedStatement = null;
+
     private ResultSet resultSet = null;
+
 
 
     public static java.sql.Connection getConnection() {
@@ -16,6 +17,7 @@ public abstract class Connection {
             try {
                 Class.forName("org.postgresql.Driver");
                 connection = java.sql.DriverManager.getConnection(Config.getUrl(), Config.getUser(), Config.getPassword());
+                System.out.println("connected successfully");
                 return connection;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -32,24 +34,24 @@ public abstract class Connection {
      * @param data generic type T it can be (Boolean, Int, Long...)
      * @param <T> generic type T
      */
-    public static  <T>void setParam(int index, T data) {
+    public static  <T>void setParam(int index, T data,PreparedStatement statement) {
         try{
 
 //            preparedStatement.setObject(index, data);
             switch (((Object) data).getClass().getSimpleName()) {
-                case "Boolean" -> preparedStatement.setBoolean(index, (Boolean) data);
-                case "Integer" -> preparedStatement.setInt(index, (int) data);
-                case "Long" -> preparedStatement.setLong(index, (long) data);
-                case "String" -> preparedStatement.setString(index, (String) data);
-                case "Float" -> preparedStatement.setDouble(index, (Float) data);
-                case "Double" -> preparedStatement.setDouble(index, (Double) data);
-                case "LocalDate" ->preparedStatement.setObject(index, data);
+                case "Boolean" -> statement.setBoolean(index, (Boolean) data);
+                case "Integer" -> statement.setInt(index, (int) data);
+                case "Long" -> statement.setLong(index, (long) data);
+                case "String" -> statement.setString(index, (String) data);
+                case "Float" -> statement.setDouble(index, (Float) data);
+                case "Double" -> statement.setDouble(index, (Double) data);
+                case "LocalDate" -> statement.setObject(index, data);
             }
 
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Error with  statement parameter placeholder");
-            preparedStatement = null;
+            statement = null;
         }
     }
 
@@ -68,10 +70,10 @@ public abstract class Connection {
      * Execute query and return a result set
      * @return ResultSet
      */
-    public ResultSet execute () {
+    public ResultSet execute (PreparedStatement statement) {
         try{
-            if(preparedStatement != null){
-                resultSet = preparedStatement.executeQuery();
+            if(statement != null){
+                resultSet = statement.executeQuery();
                 return resultSet;
             } else {
                 System.out.println("Prepared query is null!");
@@ -83,11 +85,11 @@ public abstract class Connection {
             return null;
         }
     }
-    public int executeUpdate () {
+    public int executeUpdate (PreparedStatement statement) {
         int count = 0;
         try{
-            if(preparedStatement != null){
-                count = preparedStatement.executeUpdate();
+            if(statement != null){
+                count = statement.executeUpdate();
             } else {
                 System.out.println("Prepared query is null!");
             }
@@ -122,9 +124,9 @@ public abstract class Connection {
         }
     }
 
-    public void closeQueryOperations () {
+    public void closeQueryOperations (PreparedStatement statement) {
         if (resultSet != null) try { resultSet.close(); } catch (SQLException ignore) {}
-        if (preparedStatement != null) try { preparedStatement.close(); } catch (SQLException ignore) {}
+        if (statement != null) try { statement.close(); } catch (SQLException ignore) {}
     }
 
 }
