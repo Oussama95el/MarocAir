@@ -86,6 +86,30 @@ public class Dao extends Connection {
         }
     }
 
+
+//    protected String[] getFields() {
+//        return Arrays.stream(getClass().getDeclaredFields()).map(Field::getName).toArray(String[]::new);
+//    }
+//    @Override
+//    public String toString() {
+//        System.out.println(getTableName());
+//        String[] fields = getFields();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        stringBuilder.append("Entity: ").append(getClass().getName()).append(" {");
+//        for (String field : fields) {
+//            try {
+//                stringBuilder.append(field)
+//                        .append(": ")
+//                        .append(getClass().getDeclaredField(field).get(this))
+//                        .append(" ");
+//            } catch (IllegalAccessException | NoSuchFieldException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        stringBuilder.append("}");
+//        return stringBuilder.toString();
+//    }
+
     public static void main(String[] args) {
 
     String[] clients = {"phone"};
