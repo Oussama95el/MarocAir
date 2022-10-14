@@ -1,13 +1,12 @@
 package com.maroc_air.Modelles;
+import com.maroc_air.DAO.Dao;
 import com.maroc_air.Database.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 abstract public class Model extends Connection {
-   /* protected static Dao getRepository(Model instance) {
+    protected static Dao getRepository(Model instance) {
         return Dao.getRepository(instance.getTableName());
-    }*/
+    }
     public static int getSize(ResultSet resultSet) {
         int size = 0;
         try {
