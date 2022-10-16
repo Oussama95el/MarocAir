@@ -38,20 +38,14 @@ public abstract class Connection {
         try{
 
 //            preparedStatement.setObject(index, data);
-            if ("Boolean".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setBoolean(index, (Boolean) data);
-            } else if ("Integer".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setInt(index, (int) data);
-            } else if ("Long".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setLong(index, (long) data);
-            } else if ("String".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setString(index, (String) data);
-            } else if ("Float".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setDouble(index, (Float) data);
-            } else if ("Double".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setDouble(index, (Double) data);
-            } else if ("LocalDate".equals(((Object) data).getClass().getSimpleName())) {
-                statement.setObject(index, data);
+            switch (((Object) data).getClass().getSimpleName()) {
+                case "Boolean" : statement.setBoolean(index, (Boolean) data);break;
+                case "Integer" : statement.setInt(index, (int) data);break;
+                case "Long" : statement.setLong(index, (long) data);break;
+                case "String" : statement.setString(index, (String) data);break;
+                case "Float" : statement.setDouble(index, (Float) data);break;
+                case "Double" : statement.setDouble(index, (Double) data);break;
+                case "LocalDate" : statement.setObject(index, data);break;
             }
 
         } catch (SQLException e){
