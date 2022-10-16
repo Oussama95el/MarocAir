@@ -81,11 +81,7 @@ public class Vol extends Dao{
 
 
     public static void main(String[] args) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date(22,10,16);
-        System.out.println(formatter.format(date));
-        Vol vol = new Vol("Casa","Tanger",40,date,date,Airline.RYANAIR);
-        System.out.println(vol.save());
+
 
 
     }
