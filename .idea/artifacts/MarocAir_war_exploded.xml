@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" build-on-make="true" name="MarocAir:war exploded">
-    <output-path>$PROJECT_DIR$/MarocAir_App/target/MarocAir-1.0-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/MarocAir_App/target/MarocAir-MarocVol-1.0</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -20,7 +20,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/MarocAir_App/target/MarocAir-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/MarocAir_App/target/MarocAir-MarocVol-1.0/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="MarocAir/web/Web" />
     </root>

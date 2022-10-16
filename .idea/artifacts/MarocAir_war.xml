@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="MarocAir-1.0-SNAPSHOT.war">
+    <root id="archive" name="MarocAir-MarocVol-1.0.war">
       <element id="artifact" artifact-name="MarocAir:war exploded" />
     </root>
   </artifact>
