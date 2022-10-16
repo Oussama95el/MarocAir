@@ -1,8 +1,8 @@
 package com.maroc_air.DAO;
 
 import com.maroc_air.Database.Connection;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
+
+
 
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
@@ -120,8 +120,6 @@ public class Dao extends Connection {
             }
             assert preparedStatement != null;
             ResultSet resultSet = execute(preparedStatement);
-//            PreparedStatement statement = Connection.getConnection().prepareStatement("select * from clients limit 1");
-//            ResultSet resultSet = statement.executeQuery();
             if (resultSet == null) {
                 return null;
             }
@@ -297,7 +295,7 @@ public class Dao extends Connection {
     /**
      * Get primary key value from class name by primaryKey
      */
-    @Nullable
+
     private Object getPrimaryKeyValue() {
         String primaryKey = getPrimaryKey();
         Object primaryKeyValue = null;
