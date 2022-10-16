@@ -33,7 +33,7 @@ public class Reservation extends HttpServlet {
         dispatcher.forward(request,response);
     }
     private void insertReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        com.maroc_air.Modelles.Reservation newReservation = new com.maroc_air.Modelles.Reservation(1,1,35,true);
+//        com.maroc_air.Modelles.Reservation newReservation = new com.maroc_air.Modelles.Reservation(1,1,35,true);
         Dao ReservationDao = new Dao("reservation");
         // insert in method dao
         response.sendRedirect("list");

@@ -65,7 +65,7 @@ public class Dao extends Connection {
      */
     public ResultSet getAll() {
         String query = "SELECT * FROM " + getTableName();
-
+        System.out.println(getTableName());
         try {
             PreparedStatement preparedStatement =  prepare(query);
             assert preparedStatement != null;
@@ -138,6 +138,7 @@ public class Dao extends Connection {
     public boolean save() {
         String primaryKey = getPrimaryKey();      // get primary key
         Object primaryKeyValue = getPrimaryKeyValue();  // get value of primary key
+        System.out.println(getPrimaryKey()+"             "+getPrimaryKeyValue());
         assert primaryKeyValue != null;
         if (!primaryKeyValue.equals(-1)) {
 //            return update();
