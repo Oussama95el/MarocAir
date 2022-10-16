@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <jsp:include page="header.jsp" />
+    <jsp:include page="components/header.jsp" />
     <jsp:include page="reservation.jsp"/>
 </body>
 </html>

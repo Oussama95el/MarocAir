@@ -14,18 +14,12 @@ public class Reservation extends HttpServlet {
     protected  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         System.out.println(action);
-        switch (action){
-            case "/insert":
-                this.insertReservation(request,response);
-                break;
-            case "/show":
-                this.showFormReservation(request,response);
-                break;
-            case "/Delete":
-                this.deleteReservation(request,response);
-                break;
-            default:
-                break;
+        switch (action) {
+            case "/insert" -> this.insertReservation(request, response);
+            case "/show" -> this.showFormReservation(request, response);
+            case "/Delete" -> this.deleteReservation(request, response);
+            default -> {
+            }
         }
     }
     private void showFormReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
