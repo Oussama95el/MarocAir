@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: adm
-  Date: 11/10/2022
-  Time: 16:26
+  User: abdessalm staili
+  Date: 10/14/2022
+  Time: 11:46 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Reservation</title>
+    <title>Title</title>
 </head>
 <body>
-      <h1>Reservation List</h1>
+<h1> is a page reseravation</h1>
 </body>
 </html>

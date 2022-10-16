@@ -4,12 +4,10 @@
 <html>
 <head>
     <title>JSP -  World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<h1><%= "Hello Oussama!" %>
-</h1>
-<a href="taramasalata">ffzfezfzefze</a>
-<br/>
-
+    <jsp:include page="header.jsp" />
+    <jsp:include page="reservation.jsp"/>
 </body>
 </html>
