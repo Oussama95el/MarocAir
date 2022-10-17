@@ -26,8 +26,6 @@ public abstract class Connection {
         }
         return connection;
     }
-
-
     /**
      * Set statement after setting parameters and cast them to the referred type
      * @param index int
@@ -36,7 +34,6 @@ public abstract class Connection {
      */
     public static  <T>void setParam(int index, T data,PreparedStatement statement) {
         try{
-
 //            preparedStatement.setObject(index, data);
             switch (((Object) data).getClass().getSimpleName()) {
                 case "Boolean" : statement.setBoolean(index, (Boolean) data);break;
@@ -47,14 +44,12 @@ public abstract class Connection {
                 case "Double" : statement.setDouble(index, (Double) data);break;
                 case "LocalDate" : statement.setObject(index, data);break;
             }
-
         } catch (SQLException e){
             e.printStackTrace();
             System.out.println("Error with  statement parameter placeholder");
             statement = null;
         }
     }
-
     /**
      * Initialize statement and return prepared statement
      * @param query String
@@ -64,8 +59,6 @@ public abstract class Connection {
         return Objects.requireNonNull(getConnection())
                 .prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     }
-
-
     /**
      * Execute query and return a result set
      * @return ResultSet
