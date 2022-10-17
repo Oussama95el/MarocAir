@@ -46,8 +46,6 @@ public class Reservation extends HttpServlet {
         response.sendRedirect("list");
     }
 
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
