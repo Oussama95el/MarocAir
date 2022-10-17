@@ -26,8 +26,6 @@ public abstract class Connection {
         }
         return connection;
     }
-
-
     /**
      * Set statement after setting parameters and cast them to the referred type
      * @param index int
@@ -58,7 +56,6 @@ public abstract class Connection {
             statement = null;
         }
     }
-
     /**
      * Initialize statement and return prepared statement
      * @param query String
@@ -68,8 +65,6 @@ public abstract class Connection {
         return Objects.requireNonNull(getConnection())
                 .prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     }
-
-
     /**
      * Execute query and return a result set
      * @return ResultSet
