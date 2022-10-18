@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name ="Reservation", value = "/Reservation")
 public class Reservation extends HttpServlet {
@@ -13,7 +14,26 @@ public class Reservation extends HttpServlet {
     @Override
     protected  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
-        System.out.println(action);
+        response.setContentType("text/plain");
+
+
+        String TypeReservation = request.getParameter("typereservation");
+        String nAdulte = request.getParameter("Nadulte");
+        String nenfant = request.getParameter("nenfant");
+        String lieuDepart= request.getParameter("lieuDepart");
+        String lieuArrever= request.getParameter("lieuArrever");
+        String datedepart = request.getParameter("datedepart");
+
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>form example</title>");
+        out.println("<head>");
+        out.println("<body>");
+        out.println(TypeReservation +  " "+nAdulte+"  "+nenfant+"   "+lieuArrever+"  "+lieuDepart+"  "+datedepart);
+        out.println("</body>");
+        out.println("</html>");
+
         switch (action){
             case "/insert":
                 this.insertReservation(request,response);

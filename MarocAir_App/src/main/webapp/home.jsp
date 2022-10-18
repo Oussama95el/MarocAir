@@ -1,4 +1,4 @@
-<%@ page import="com.maroc_air.Controller.Reservation" %>
+<%@ page import="com.maroc_air.Controller.DataReservation" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>

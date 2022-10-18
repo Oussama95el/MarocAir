@@ -1,9 +1,5 @@
 package com.maroc_air.DAO;
-
 import com.maroc_air.Database.Connection;
-
-
-
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,8 +11,6 @@ import java.util.HashMap;
 public class Dao extends Connection {
     public static HashMap<String, Dao> repositories = new HashMap<>();
     private final String tableName;
-
-
     //Constructor
     public Dao(String tableName) {
         Connection.getConnection();
@@ -65,7 +59,6 @@ public class Dao extends Connection {
      */
     public ResultSet getAll() {
         String query = "SELECT * FROM " + getTableName();
-
         try {
             PreparedStatement preparedStatement =  prepare(query);
             assert preparedStatement != null;

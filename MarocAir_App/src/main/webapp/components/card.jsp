@@ -12,6 +12,5 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<jsp:include page="card.jsp"/>
 </body>
 </html>
