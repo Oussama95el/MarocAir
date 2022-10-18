@@ -34,14 +34,6 @@ public class DaoManager<T> extends Connection{
         return (DaoManager<T>) instances.get(name);
     }
 
-    public static boolean showQueryLog() {
-        return showQueryLog;
-    }
-
-    public static void setShowQueryLog(boolean showQueryLog) {
-        DaoManager.showQueryLog = showQueryLog;
-    }
-
     public T[] findByAnd(String[] fields, Object[] values, int limit, int offset) {
         return find(fields, values, "AND", limit, offset);
     }
