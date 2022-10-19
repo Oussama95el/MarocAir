@@ -26,12 +26,13 @@ public class VolDispoServlet extends HttpServlet {
         String  lieuArrever =request.getParameter("lieuArrever");
         String[] fields = new String[]{"villedepart","villearrive"};
         String[] values = new String[]{lieuDepart,lieuArrever};
-        System.out.println(values);
         Vol[] vols = dao.findAll(fields,values);
         response.addHeader("Content-Type", "application/json");
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("vol", vols);
         map.put("count", vols.length);
+        map.put("nbr_adulte", request.getParameter("Nadulte"));
+        map.put("nbr_enfant", request.getParameter("nenfant"));
         String nextJSP = "/volDisponible.jsp";
         request.setAttribute("data", map);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
