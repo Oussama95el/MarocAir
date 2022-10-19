@@ -1,7 +1,6 @@
 package com.maroc_air.Controller;
 import com.maroc_air.DAO.DaoManager;
 import com.maroc_air.Modelles.Reservation;
-import com.maroc_air.Utils.Helper;
 import com.maroc_air.Utils.Json;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -24,7 +23,6 @@ public class ReservationServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(request,response);
     }
-
     // save reservation by POST
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,21 +32,29 @@ public class ReservationServlet extends HttpServlet {
         int nbr_enfant = Integer.parseInt(request.getParameter("nbr_anfant"));
         Reservation reservation = new Reservation(nbrAdulte,nbr_enfant,idclient,idvol);
 //       Reservation reservation = Json.parse(request.getReader(), Reservation.class);
+//        print a message to client to send a email confirmation
 
-        boolean saved = dao.save(reservation);
-        HashMap<String, Object> res = new HashMap<>();
-        if (saved) {
-            res.put("status", "success");
-            res.put("message", "reservation saved");
-            res.put("extra", reservation);
-            response.setStatus(201);
-        } else {
-            res.put("status", "error");
-            res.put("message", "reservation not saved");
-            response.setStatus(500);
-        }
-        response.setHeader("Content-Type", "application/json");
-        response.getWriter().println(Json.stringify(res));
+
+
+            boolean saved = dao.save(reservation);
+            HashMap<String, Object> res = new HashMap<>();
+            if (saved) {
+                res.put("status", "success");
+                res.put("message", "reservation saved");
+                res.put("extra", reservation);
+                response.setStatus(201);
+            } else {
+                res.put("status", "error");
+                res.put("message", "reservation not saved");
+                response.setStatus(500);
+            }
+            response.setHeader("Content-Type", "application/json");
+            response.getWriter().println(Json.stringify(res));
+
+
+
+
+
     }
     //    PUT /reservation?id=1
 //    @Override
