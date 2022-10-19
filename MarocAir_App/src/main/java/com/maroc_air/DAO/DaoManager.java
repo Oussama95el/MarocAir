@@ -46,7 +46,7 @@ public class DaoManager<T> extends Connection{
     }
 
     public T[] findAll(String[] fields, Object[] values) {
-        return find(fields, values, null, -1, -1);
+        return find(fields, values, "AND", -1, -1);
     }
 
     public T[] find() {
