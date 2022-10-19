@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.maroc_air.Modelles.Vol" %>
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: abdessalm staili
   Date: 10/16/2022
@@ -6,6 +8,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  HashMap<String, Object> data = (HashMap<String, Object>) request.getAttribute("data");
+  Vol[] vols = (Vol[]) data.get("vol");
+%>
 <html>
 <head>
     <title>Title</title>
@@ -42,12 +48,15 @@
   </div>
   <div class="flex flex-wrap justify-between -mx-3 mb-6">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
         lieu départ
       </label>
       <div class="relative">
-        <select name="lieuDepart" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option>Texas</option>
+        <select name="lieuDepart" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" >
+          <%for(Vol vol:vols){%>
+          <option><%=vol.getVilledepart()%></option>
+          <%}%>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -60,7 +69,9 @@
       </label>
       <div class="relative">
         <select name="lieuArrever" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option>New Mexico</option>
+          <%for(Vol vol:vols){%>
+          <option><%=vol.getVillearrive()%></option>
+          <%}%>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
