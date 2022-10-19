@@ -14,19 +14,13 @@ public class Reservation {
     private int nbr_adulte;
     @Column
     private int nbr_enfant;
-    @Column
-    private int prixreservation;
-    @Column
-    private boolean archive;
 
 
 
     //Constructor
-    public Reservation(int nbr_adulte, int nbr_enfant, int prixreservation, boolean archive,int id_client,int id_vol) {
+    public Reservation(int nbr_adulte, int nbr_enfant,int id_client,int id_vol) {
         this.nbr_adulte = nbr_adulte;
         this.nbr_enfant = nbr_enfant;
-        this.prixreservation = prixreservation;
-        this.archive = archive;
         this.id_vol = id_vol;
         this.id_client = id_client;
     }
