@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="POST" action="${pageContext.request.contextPath}/Reservation" class="w-full max-w-lg">
+<form class="w-full max-w-lg">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -42,7 +42,7 @@
   </div>
   <div class="flex flex-wrap justify-between -mx-3 mb-6">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
         lieu départ
       </label>
       <div class="relative">
@@ -59,7 +59,7 @@
         lieu d’arrivé
       </label>
       <div class="relative">
-        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
           <option>New Mexico</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

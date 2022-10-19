@@ -1,23 +1,29 @@
 package com.maroc_air.Modelles;
 
-import com.maroc_air.DAO.Dao;
+import com.maroc_air.DAO.Column;
+import com.maroc_air.DAO.Table;
+
 
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 
-public class Vol extends Dao{
 
-    private static final Dao dao = new Dao("vol");
+@Table(tableName = "vol")
+public class Vol{
+    @Column
     private String villeDepart;
+    @Column
     private String villeArrive;
+    @Column
     private int nbrPlace;
+    @Column
     private Date dateDepart;
+    @Column
     private Date dateArrive;
+    @Column
     private Airline airLine;
 
+
     public Vol(String villeDepart, String villeArrive, int nbrPlace, Date dateDepart, Date dateArrive, Airline airLine) {
-        super("vol");
         this.villeDepart = villeDepart;
         this.villeArrive = villeArrive;
         this.nbrPlace = nbrPlace;
@@ -25,64 +31,12 @@ public class Vol extends Dao{
         this.dateArrive = dateArrive;
         this.airLine = airLine;
     }
-    // getters
-    public String getVilleDepart() {
-        return villeDepart;
-    }
+    public Vol(){
 
-    public String getVilleArrive() {
-        return villeArrive;
     }
-
-    public int getNbrPlace() {
-        return nbrPlace;
-    }
-
-    public Date getDateDepart() {
-        return dateDepart;
-    }
-
-    public Date getDateArrive() {
-        return dateArrive;
-    }
-
-    public Airline getAirLine() {
-        return airLine;
-    }
-    // Setters
-    public void setVilleArrive(String villeArrive) {
-        this.villeArrive = villeArrive;
-    }
-
-    public void setNbrPlace(int nbrPlace) {
-        this.nbrPlace = nbrPlace;
-    }
-
-    public void setDateDepart(Date dateDepart) {
-        this.dateDepart = dateDepart;
-    }
-
-    public void setDateArrive(Date dateArrive) {
-        this.dateArrive = dateArrive;
-    }
-
-    public void setVilleDepart(String villeDepart) {
-        this.villeDepart = villeDepart;
-    }
-
-    public void setAirLine(Airline airLine) {
-        this.airLine = airLine;
-    }
-
-    public static ResultSet getAllVols(){
-        return dao.getAll();
-    }
-
 
 
     public static void main(String[] args) {
-
-
 
     }
 }
