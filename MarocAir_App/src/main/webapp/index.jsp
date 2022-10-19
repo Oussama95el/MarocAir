@@ -1,4 +1,3 @@
-<%@ page import="com.maroc_air.Controller.DataReservation" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -8,6 +7,6 @@
 </head>
 <body>
     <jsp:include page="components/header.jsp" />
-    <jsp:include page="reservation.jsp"/>
+    <h1>page home</h1>
 </body>
 </html>
