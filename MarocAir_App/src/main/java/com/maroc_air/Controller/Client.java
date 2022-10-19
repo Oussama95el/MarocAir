@@ -10,7 +10,9 @@ import java.io.IOException;
 public class Client extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+//        String nextJSP = "/PageSingUp.jsp";
+//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+//        dispatcher.forward(request,response);
     }
 
     @Override
