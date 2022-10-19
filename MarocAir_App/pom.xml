@@ -44,6 +44,12 @@
             <artifactId>gson</artifactId>
             <version>2.9.0</version>
         </dependency>
+        <!-- https://mavenlibs.com/maven/dependency/com.courier/courier-java -->
+        <dependency>
+            <groupId>com.courier</groupId>
+            <artifactId>courier-java</artifactId>
+            <version>1.6.0</version>
+        </dependency>
     </dependencies>
 
     <build>
