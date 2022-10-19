@@ -18,16 +18,16 @@ public class Vol{
     @Column
     private int nbrplace;
     @Column
-    private String datedepart;
+    private Date datedepart;
     @Column
-    private String datearrive;
+    private Date datearrive;
     @Column(type = Airline.class)
     private Airline airline;
     @Column
     private String prixvol;
 
 
-    public Vol(int idvol,String villedepart, String villearrive, int nbrplace, String datedepart, String datearrive, Airline airline,String prixvol) {
+    public Vol(int idvol,String villedepart, String villearrive, int nbrplace, Date datedepart, Date datearrive, Airline airline,String prixvol) {
         this.idvol = idvol;
         this.villedepart = villedepart;
         this.villearrive = villearrive;
@@ -40,9 +40,7 @@ public class Vol{
     public Vol(){}
 
 
-    public static void main(String[] args) {
-
-    }
+    public static void main(String[] args) {    }
 
     public int getIdvol() {
         return idvol;
@@ -60,11 +58,11 @@ public class Vol{
         return nbrplace;
     }
 
-    public String getDatedepart() {
+    public Date getDatedepart() {
         return datedepart;
     }
 
-    public String getDatearrive() {
+    public Date getDatearrive() {
         return datearrive;
     }
 
