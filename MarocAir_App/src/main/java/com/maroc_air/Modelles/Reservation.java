@@ -1,6 +1,6 @@
 package com.maroc_air.Modelles;
 
-import com.maroc_air.Controller.Vol;
+
 import com.maroc_air.DAO.Column;
 import com.maroc_air.DAO.Table;
 import java.time.LocalTime;
