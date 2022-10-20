@@ -9,7 +9,7 @@ import java.util.Properties;
 public class SimpleEmail {
 
     // Sender's email ID needs to be mentioned
-    private static String from = "elbechario@gmail.com";
+    private static String from = "lagdimi.mehdi.dev@gmail.com";
     private static String password = "ebodxwtplfvixzxl";
 
     // Assuming you are sending email from localhost
@@ -37,6 +37,5 @@ public class SimpleEmail {
 
         EmailHelper.sendEmail(session, to, from , subject, msg);
         return LocalTime.now();
-
     }
 }
