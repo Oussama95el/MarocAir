@@ -2,10 +2,12 @@ package com.maroc_air.Controller;
 import com.maroc_air.DAO.DaoManager;
 import com.maroc_air.Utils.Helper;
 import com.maroc_air.Utils.Json;
+import com.maroc_air.Utils.email.SimpleEmail;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.HashMap;
 
 @WebServlet(name ="Reservation", value = "/Reservation")
@@ -34,6 +36,7 @@ public class Reservation extends HttpServlet {
             res.put("status", "success");
             res.put("message", "reservation saved");
             res.put("extra", reservation);
+            SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com","Reservation Ticket", "<h1>Reservation Confirmer :</h1><br>"+reservation);
             response.setStatus(201);
         } else {
             res.put("status", "error");
