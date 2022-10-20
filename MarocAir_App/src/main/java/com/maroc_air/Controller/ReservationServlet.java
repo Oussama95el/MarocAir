@@ -2,6 +2,7 @@ package com.maroc_air.Controller;
 import com.maroc_air.DAO.DaoManager;
 import com.maroc_air.Modelles.Reservation;
 import com.maroc_air.Utils.Json;
+import com.maroc_air.Utils.email.SimpleEmail;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -34,11 +35,13 @@ public class ReservationServlet extends HttpServlet {
 //       Reservation reservation = Json.parse(request.getReader(), Reservation.class);
 //        print a message to client to send a email confirmation
 
-
-
             boolean saved = dao.save(reservation);
             HashMap<String, Object> res = new HashMap<>();
             if (saved) {
+                SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com","Reservation Ticket", "<h1>Reservation Confirmer :</h1><br>" +
+                        "<p>Voicie l'ID de votre vol reserver : <B>"+ idvol+" </B></p>"+
+                        "<p>Voicie le nombre enfant de votre vol reserver : <B>"+ idvol+" </B></p>"+
+                        "<p>Voicie le nombre adulte de votre vol reserver : <B>"+ idvol+" </B></p>");
                 res.put("status", "success");
                 res.put("message", "reservation saved");
                 res.put("extra", reservation);
